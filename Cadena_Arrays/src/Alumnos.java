@@ -3,7 +3,7 @@
  * @author Manuel
  * @author Juan Manuel
  * @author Oktay
- *
+ * @see <a href="https://github.com/mmb-96/Programacion/tree/master/Cadena_Arrays">Repositorio Github Manuel</a>
  */
 public class Alumnos {
 	
@@ -72,7 +72,6 @@ public class Alumnos {
 		if(valor < 0 || valor > 10) {
 			throw new IllegalArgumentException("Notas invalidas. Entre 0 y 10");
 		}else {
-//			this.notas = notas;
 			for(int i = 0; i < notas.length && !anadido ; i++) {
 				if(notas[i] == 0) {
 					notas[i] = valor;

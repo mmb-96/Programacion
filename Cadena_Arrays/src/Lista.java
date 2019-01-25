@@ -4,7 +4,7 @@ import java.util.Scanner;
  * @author Manuel
  * @author Juan Manuel
  * @author Oktay
- *
+ * @see <a href="https://github.com/mmb-96/Programacion/tree/master/Cadena_Arrays">Repositorio Github Manuel</a>
  */
 
 public class Lista {
@@ -130,7 +130,6 @@ public class Lista {
 		    }
 		}
 		for (int i = 0; i < lista.length && lista[i] != null; i++) {
-			lista[i].getNotas();
 			for (int j = 0; j < lista[i].getNotas().length; j++ ) {
 				notaalumno +=lista[i].getNotas()[j];
 			}
