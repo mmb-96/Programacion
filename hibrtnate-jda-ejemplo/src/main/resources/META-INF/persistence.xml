@@ -9,6 +9,8 @@
 
 		<class>net.ddns.manuelmb.modelo.Empleado</class>
 		<class>net.ddns.manuelmb.modelo.Direccion</class>
+		<class>net.ddns.manuelmb.modelo.Autor</class>
+		<class>net.ddns.manuelmb.modelo.Libro</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
