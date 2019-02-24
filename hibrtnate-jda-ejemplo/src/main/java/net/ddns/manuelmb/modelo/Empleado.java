@@ -3,9 +3,12 @@ package net.ddns.manuelmb.modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +29,10 @@ public class Empleado implements Serializable{
 	
 	@Column(name = "FEHCA_NACIMENTO")
 	private LocalDate fechaNacimineto;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "ID_DIRECCION")
+	private Direccion dir;
 	
 	public Empleado() {
 		
@@ -69,10 +76,22 @@ public class Empleado implements Serializable{
 	public void setFechaNacimineto(LocalDate fechaNacimineto) {
 		this.fechaNacimineto = fechaNacimineto;
 	}
+	
+	public Direccion getDireccion() {
+		return dir;
+	}
+	
+	public void setDireccion(Direccion direccion) {
+		 this.dir = direccion; 
+		 dir.setEmpleado(this);
+	}
 
 	@Override
 	public String toString() {
 		return "Empleado [codigo=" + codigo + ", apellidos=" + apellidos + ", nombre=" + nombre + ", fechaNacimineto="
-				+ fechaNacimineto + "]";
+				+ fechaNacimineto + ", direccion=" + dir + "]";
 	}
+
+
+	
 }

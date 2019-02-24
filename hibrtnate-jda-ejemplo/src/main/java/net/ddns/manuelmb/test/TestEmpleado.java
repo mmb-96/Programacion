@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import net.ddns.manuelmb.modelo.Direccion;
 import net.ddns.manuelmb.modelo.Empleado;
 
 public class TestEmpleado {
@@ -22,8 +23,8 @@ public class TestEmpleado {
 		manager = emf.createEntityManager();
 		
 		insertInicial();
-		imprimirTodo();
 		
+		imprimirTodo();
 		manager.getTransaction().begin();
 		Empleado e = manager.find(Empleado.class, 11L);
 		e.setNombre("David");
@@ -35,9 +36,11 @@ public class TestEmpleado {
 	}
 
 	private static void insertInicial() {
+		
 		Empleado a = new Empleado(10L, "Melero", "Manuel", LocalDate.of(1996, Month.FEBRUARY, 6));
 		Empleado b = new Empleado(11L, "Cruz", "José", LocalDate.of(2000, 10, 6));
-		
+		a.setDireccion(new Direccion(15L, "Calle Costa Y Llobera, 107", "Sevilla", "Sevilla", "España"));
+		b.setDireccion(new Direccion(16L, "Calle Falsa, 123", "Leganes", "Madrid", "España"));
 		manager.getTransaction().begin();
 		manager.persist(a);
 		manager.persist(b);

@@ -8,6 +8,7 @@
 	<persistence-unit name="aplicacion">
 
 		<class>net.ddns.manuelmb.modelo.Empleado</class>
+		<class>net.ddns.manuelmb.modelo.Direccion</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
