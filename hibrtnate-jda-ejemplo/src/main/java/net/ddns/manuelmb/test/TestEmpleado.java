@@ -26,7 +26,7 @@ public class TestEmpleado {
 		imprimirTodo();
 		
 		manager.getTransaction().begin();
-		Empleado e = manager.find(Empleado.class, 25L);
+		Empleado e = manager.find(Empleado.class, 11L);
 		e.setNombre("David");
 		e.setApellidos("Mulero");
 		manager.getTransaction().commit();
