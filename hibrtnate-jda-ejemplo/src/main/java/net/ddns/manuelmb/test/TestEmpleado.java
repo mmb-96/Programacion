@@ -3,6 +3,8 @@
  */
 package net.ddns.manuelmb.test;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -34,8 +36,8 @@ public class TestEmpleado {
 	}
 
 	private static void insertInicial() {
-		Empleado a = new Empleado(10L, "Melero", "Manuel", new GregorianCalendar(1996, 2, 6).getTime());
-		Empleado b = new Empleado(11L, "Cruz", "José", new GregorianCalendar(2000, 6, 12).getTime());
+		Empleado a = new Empleado(10L, "Melero", "Manuel", LocalDate.of(1996, Month.FEBRUARY, 6));
+		Empleado b = new Empleado(11L, "Cruz", "José", LocalDate.of(2000, 10, 6));
 		
 		manager.getTransaction().begin();
 		manager.persist(a);

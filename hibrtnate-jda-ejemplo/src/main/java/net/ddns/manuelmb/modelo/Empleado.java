@@ -1,7 +1,7 @@
 package net.ddns.manuelmb.modelo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +25,13 @@ public class Empleado implements Serializable{
 	private String nombre;
 	
 	@Column(name = "FEHCA_NACIMENTO")
-	private Date fechaNacimineto;
+	private LocalDate fechaNacimineto;
 	
 	public Empleado() {
 		
 	}
 
-	public Empleado(Long codigo, String apellidos, String nombre, Date fechaNacimineto) {
+	public Empleado(Long codigo, String apellidos, String nombre, LocalDate fechaNacimineto) {
 		this.codigo = codigo;
 		this.apellidos = apellidos;
 		this.nombre = nombre;
@@ -62,11 +62,11 @@ public class Empleado implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public Date getFechaNacimineto() {
+	public LocalDate getFechaNacimineto() {
 		return fechaNacimineto;
 	}
 
-	public void setFechaNacimineto(Date fechaNacimineto) {
+	public void setFechaNacimineto(LocalDate fechaNacimineto) {
 		this.fechaNacimineto = fechaNacimineto;
 	}
 
