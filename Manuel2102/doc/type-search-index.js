@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"Arbitro"},{"p":"<Unnamed>","l":"Categoria"},{"p":"<Unnamed>","l":"Fecha"},{"p":"<Unnamed>","l":"Ficha"},{"p":"<Unnamed>","l":"Juego"},{"p":"<Unnamed>","l":"Jugador"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"Participante"},{"p":"<Unnamed>","l":"Partida"}]
