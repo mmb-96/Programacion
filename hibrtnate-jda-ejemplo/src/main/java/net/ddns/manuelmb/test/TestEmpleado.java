@@ -5,7 +5,6 @@ package net.ddns.manuelmb.test;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
