@@ -15,8 +15,8 @@ public class TransaccionReadSerializableYCommit {
 	public static void main(String[] args)throws ClassNotFoundException {
 		
 		final String url = "jdbc:mysql://localhost:3306/universidad";
-		final String user = "root";
-		final String pass = "1234";	
+		final String user = "admin";
+		final String pass = "admin";	
 		
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");

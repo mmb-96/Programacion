@@ -1,69 +1,61 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Main {
 
-	private static Connection con;
+	private static Connection con1 = null;
+	private static Connection con2 = null;
 	private static Statement stm;
-	private static PreparedStatement pstm;
+	private static ResultSet rs;
 
 	public static void main(String[] args) throws ClassNotFoundException {
-		String url = "jdbc:mysql://localhost:3306/transacciones";
-		String user = "root";
-		String pass = "1234";
-		String sql = null;		
+		
+		final String url = "jdbc:mysql://localhost:3306/universidad";
+		final String user = "root";
+		final String pass = "1234";		
 		
 		
-		Class.forName("com.mysql.cj.jdbc.Driver");
+Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		try {
-			con = DriverManager.getConnection(url, user, pass);
-			System.out.println("Conectado.");
-			con.setAutoCommit(false);
-			stm = con.createStatement();
-			sql = "INSERT INTO alumno VALUES (1, 'Manuel', 'Melero');";
-			stm.executeUpdate(sql);
-			sql = "INSERT INTO alumno VALUES (?, ?, ?);";
-			pstm = con.prepareStatement(sql);
-			pstm.setInt(1, 2);
-			pstm.setString(2, "Pepe");
-			pstm.setString(3, "Peréz");
-			pstm.executeUpdate();
-			sql = "INSERT INTO alumno VALUES (?, ?, ?);";
-			pstm = con.prepareStatement(sql);
-			pstm.setInt(1, 3);
-			pstm.setString(2, "Rafale");
-			pstm.setString(3, "Melero");
-			pstm.executeUpdate();
-			sql = "UPDATE alumno SET nombre = 'Pueba' WHERE id = 3;";
-			stm.executeUpdate(sql);
-			sql = "UPDATE alumno SET apellido = ? WHERE id = ?;";
-			pstm = con.prepareStatement(sql);
-			pstm.setString(1, "Mulero");
-			pstm.setInt(2, 1);
-			pstm.executeUpdate();
+			con1 = DriverManager.getConnection(url, user, pass);
+			con2 = DriverManager.getConnection(url, user, pass);
+			con1.setAutoCommit(false);
+			con2.setAutoCommit(false);
 			
-
+			stm = con2.createStatement();
+			rs = stm.executeQuery("SELECT dni, nombre, apellido FROM  Persona FOR Update");
 			
-			con.commit();
-			pstm.close();
-			stm.close();
-			con.close();
-		} catch (SQLException e) {
-			System.out.println("Se ha producido un error.");
-			if (con != null) {
-				try {
-					con.rollback();
-					pstm.close();
-					stm.close();
-					con.close();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+			System.out.println("\nPrimer select");
+			while(rs.next()) {
+				System.out.println("DNI " + rs.getString(1) + " Nombre " + rs.getString(2) + " Apellido " + rs.getString(3));
 			}
+			
+			stm = con1.createStatement();
+			stm.executeUpdate("INSERT INTO Persona (dni, nombre, apellido) VALUES ('6', 'Hola', 'Mundo');");
+			
+			stm = con2.createStatement();
+			rs = stm.executeQuery("SELECT dni, nombre, apellido FROM  Persona");
+			
+			System.out.println("\nSegundo select");
+			while(rs.next()) {
+				System.out.println("DNI " + rs.getString(1) + " Nombre " + rs.getString(2) + " Apellido " + rs.getString(3));
+			}
+			
+			con1.commit();
+			con2.commit();
+			
+			
+			stm.close();
+			con1.close();
+			con2.close();
+			rs.close();
+		} catch (SQLException e) {
+			System.out.println("Se ha producido un error.\n"+e.getMessage());
 		}
 
 	}

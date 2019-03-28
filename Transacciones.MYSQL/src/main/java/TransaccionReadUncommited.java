@@ -14,8 +14,8 @@ public class TransaccionReadUncommited {
 	public static void main(String[] args) throws ClassNotFoundException {
 		
 		final String url = "jdbc:mysql://localhost:3306/universidad";
-		final String user = "root";
-		final String pass = "1234";	
+		final String user = "admin";
+		final String pass = "admin";
 		
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -64,6 +64,7 @@ public class TransaccionReadUncommited {
 			stm.close();
 			con1.close();
 			con2.close();
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println("Se ha producido un error.\n"+e.getMessage());
 		}
