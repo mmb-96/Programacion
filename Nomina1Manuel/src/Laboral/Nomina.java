@@ -18,9 +18,9 @@ public class Nomina{
 	 * @param Empleado con el que calcularemos el salario.
 	 * @return Develve el salario del empleado
 	 */
-	public int sueldo(Empleado ep) {
-		int categoria = ep.getCategoria();
-		return SUELDO_BASE[categoria]+5000*ep.getAnyos();
+	public static int sueldo(Empleado ep) {
+		int categoria = ep.getCategoria()-1;
+		return SUELDO_BASE[categoria]+5000*ep.anyos;
 		
 	}
 }

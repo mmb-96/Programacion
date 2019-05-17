@@ -10,7 +10,7 @@ package Laboral;
 public class Empleado extends Persona{
 	
 	private int categoria = 1;
-	private int anyos = 0;
+	public int anyos = 0;
 	
 	/**
 	 * Constructor con todos parametros
@@ -21,10 +21,14 @@ public class Empleado extends Persona{
 	 * @param anyos Anyo de antiguedad del empleado
 	 * @throws DatosNoCorrectoException Lanza una excepcion si no es correcto la categoria y el anyo.
 	 */
-	public Empleado(String nombre, String dni, String sexo, int categoria, int anyos) throws DatosNoCorrectoException {
+	public Empleado(String nombre, String dni, char sexo, int categoria, int anyos) throws DatosNoCorrectoException {
 		super(nombre, dni, sexo);
 		setCategoria(categoria);
-		setAnyos(anyos);
+		if (anyos > -1) {
+			this.anyos = anyos;
+		}else {
+			throw new DatosNoCorrectoException("Datos no correcto");
+		}
 	}
 	
 	/**
@@ -33,7 +37,7 @@ public class Empleado extends Persona{
 	 * @param dni Dni de la persona
 	 * @param sexo Sexo de la persona
 	 */
-	public Empleado(String nombre, String dni, String sexo) {
+	public Empleado(String nombre, String dni, char sexo) {
 		super(nombre, dni, sexo);
 	}
 	/**
@@ -58,30 +62,9 @@ public class Empleado extends Persona{
 	public void incAnyo() {
 		this.anyos = anyos++;
 	}
-	
-	/**
-	 * 
-	 * @param anyos Años del empleado.
-	 * @throws DatosNoCorrectoException Excepcion que se lanza si los datos no son correcto.
-	 */
-	public void setAnyos(int anyos) throws DatosNoCorrectoException {
-		if (anyos > -1) {
-			this.anyos = anyos;
-		}else {
-			throw new DatosNoCorrectoException("Datos no correcto");
-		}
-	}
-	
-	public int getAnyos() {
-		return anyos;
-	}
 
-	@Override
+ 	@Override
 	public String imprime() {
 		return nombre + " "+ dni + " " + categoria + " " + anyos;
 	}
-
-	
-	
-
 }

@@ -11,7 +11,7 @@ public class Persona {
 	
 	public String nombre;
 	public String dni;
-	public String sexo;
+	public char sexo;
 	
 	/**
 	 * Constructor con tres parametros
@@ -19,7 +19,7 @@ public class Persona {
 	 * @param dni Dni de la persona
 	 * @param sexo Sexo de la persona
 	 */
-	public Persona(String nombre, String dni, String sexo) {
+	public Persona(String nombre, String dni, char sexo) {
 		this.nombre = nombre;
 		this.dni = dni;
 		this.sexo = sexo;
@@ -30,7 +30,7 @@ public class Persona {
 	 * @param nombre Nombre de la persona
 	 * @param dni Dni de la persona
 	 */
-	public Persona(String nombre, String sexo) {
+	public Persona(String nombre, char sexo) {
 		this.nombre = nombre;
 		this.sexo = sexo;
 	}
